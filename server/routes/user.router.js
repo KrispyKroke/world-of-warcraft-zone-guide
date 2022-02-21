@@ -47,4 +47,15 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.get('/all', rejectUnauthenticated, (req, res) => {
+  const queryText = `SELECT * FROM "user"
+  WHERE "user"."isAdmin" = 'false';`;
+  pool.query(queryText).then(response => {
+    res.send(response.rows);
+  }).catch(error => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+});
+
 module.exports = router;
