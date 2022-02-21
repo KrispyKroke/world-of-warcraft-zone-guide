@@ -46,7 +46,7 @@ router.post('/logout', (req, res) => {
   req.logout();
   res.sendStatus(200);
 });
-
+// Retrieves all users who are not Admins for display on the Admin Page
 router.get('/all', rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT * FROM "user"
   WHERE "user"."isAdmin" = 'false';`;
