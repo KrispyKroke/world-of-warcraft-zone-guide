@@ -21,12 +21,12 @@ CREATE TABLE factions (
 
 CREATE TABLE continents (
 	"id" SERIAL PRIMARY KEY NOT NULL,
-	"name" VARCHAR(255) NOT NULL
+	"landmass" VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE zones (
 	"id" SERIAL PRIMARY KEY NOT NULL,
-	"name" VARCHAR(255) NOT NULL,
+	"zone" VARCHAR(255) NOT NULL,
 	"max_level" INTEGER NOT NULL,
 	"map_image_url" VARCHAR(255) NOT NULL,
 	"min_level" INTEGER NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE zones (
 
 CREATE TABLE quests (
 	"id" SERIAL PRIMARY KEY NOT NULL,
-	"name" VARCHAR(255) NOT NULL,
+	"quest" VARCHAR(255) NOT NULL,
 	"description" VARCHAR(500) NOT NULL,
 	"level" INTEGER NOT NULL,
 	"zone_id" INTEGER REFERENCES zones
@@ -53,7 +53,7 @@ CREATE TABLE quests_characters (
 
 CREATE TABLE dungeons (
 	"id" SERIAL PRIMARY KEY NOT NULL,
-	"name" VARCHAR(255) NOT NULL,
+	"dungeon" VARCHAR(255) NOT NULL,
 	"max_level" INTEGER NOT NULL,
 	"min_level" INTEGER NOT NULL,
 	"description" VARCHAR(500) NOT NULL,
@@ -62,14 +62,14 @@ CREATE TABLE dungeons (
 
 CREATE TABLE settlements (
 	"id" SERIAL PRIMARY KEY NOT NULL,
-	"name" VARCHAR(255) NOT NULL,
+	"town" VARCHAR(255) NOT NULL,
 	"description" VARCHAR(500) NOT NULL,
 	"zone_id" INTEGER REFERENCES zones
 );
 
 CREATE TABLE capitalCities (
 	"id" SERIAL PRIMARY KEY NOT NULL,
-	"name" VARCHAR(255) NOT NULL,
+	"city" VARCHAR(255) NOT NULL,
 	"description" VARCHAR(500) NOT NULL,
 	"map_image_url" VARCHAR(255) NOT NULL,
 	"zone_id" INTEGER REFERENCES zones,
@@ -99,10 +99,10 @@ DROP TABLE continents CASCADE;
 INSERT INTO factions ("type") 
 VALUES ('Alliance'), ('Horde'), ('Contested');
 
-INSERT INTO continents ("name") 
+INSERT INTO continents ("landmass") 
 VALUES ('Eastern Kingdoms'), ('Kalimdor');
 
-INSERT INTO zones ("name", "max_level", "map_image_url", "min_level", "description", "screenshot", "faction_id", "continent_id") 
+INSERT INTO zones ("zone", "max_level", "map_image_url", "min_level", "description", "screenshot", "faction_id", "continent_id") 
 VALUES ('Stranglethorn Vale', '50', 'images/stv.jpg', '30', 'Stranglethorn Vale is a vast rainforest in southern Eastern Kingdoms. For millennia, Stranglethorn Vale has been the home of the jungle trolls, with the Gurubashi Empire having its seat of power in Zul''Gurub.', 'images/stv_screenshot.jpg', '3', '1'),
 ('The Hinterlands', '49', 'images/hlands.jpg', '41', 'The Hinterlands is a grassy mountainous zone in northern Eastern Kingdoms. Hinterlands is home to both tribes of Forest trolls, including the Horde-aligned Revantusk Tribe, as well as the Wildhammer Dwarves, staunch members of the Alliance who live and train gryphons in the settlement of Aerie Peak.', 'images/hlands_screenshot.jpg', '3', '1'),
 ('Hillsbrad Foothills', '31', 'images/hfhills.jpg', '20', 'Hillsbrad Foothills is a zone covered with hills in southern Lordaeron, central Eastern Kingdoms. This zone, covered in grassy hills and plenty of wildlife, is one of the only locations of Lordaeron that was left untouched by the Scourge, with the Alliance settlement of Southshore thriving here.', 'images/hfhills_screenshot.jpg', '3', '1'),
@@ -142,7 +142,7 @@ VALUES ('Stranglethorn Vale', '50', 'images/stv.jpg', '30', 'Stranglethorn Vale 
 ('Mulgore', '10', 'images/gore.jpg', '1', 'Mulgore is plains zone located in central Kalimdor. Mulgore is nestled by the hills of Stonetalon Mountains and protected by natural walls from pretty much all directions, which makes this zone full of grassy planes and littered with wild game a perfect haven for its inhabitants, the noble and formerly nomadic Tauren.', 'images/gore_screenshot.jpg', '2', '2'),
 ('Durotar', '10', 'images/durotar.jpg', '1', 'Durotar is a rugged zone located in the eastern coast of Kalimdor. Durotar is a very harsh zone to live in, with many rocky mountains, the desert-like soil making it hard to grow produce, and the access to drinkable water being difficult.', 'images/durotar_screenshot.jpg', '2', '2');
 
-INSERT INTO capitalCities ("name", "description", "map_image_url", "zone_id", "faction_id") 
+INSERT INTO capitalCities ("city", "description", "map_image_url", "zone_id", "faction_id") 
 VALUES ('Darnassus', 'Darnassus is the capital town of the Night Elves of the Alliance. The high priestess of Elune, Tyrande Whisperwind, resides in the Temple of the Moon, surrounded by other sisters of Elune. Arch Druid Fandral Staghelm also resides here, atop the highest tree in the Cenarion Enclave. The city is arranged in a series of terraces around the central tree surrounded by a lake.', 'images/darn.jpg', '36', '1'),
 ('Ironforge', 'Ironforge is the capital city of the dwarves. It is an intricate circular cavern carved into the mountains of Dun Morogh, with a massive forge near flight paths at the center. It is primarily populated by dwarves, but there is a strong gnomish presence in Tinker Town, as well as humans traveling via the Deeprun Tram.', 'images/iron.jpg', '20', '1'),
 ('Stormwind City', 'Stormwind City is the capital city of the Alliance. It is located in the northwestern part of Elwynn Forest. Stormwind City is also home to The Stockade instance, where war criminals are imprisoned.', 'images/storm.jpg', '17', '1'),
@@ -150,7 +150,7 @@ VALUES ('Darnassus', 'Darnassus is the capital town of the Night Elves of the Al
 ('Thunder Bluff', 'Orgrimmar is the capital city of the Horde, with large settlements of trolls, orcs and tauren. Orgrimmar is also home to the Ragefire Chasm instance, a network of volcanic tunnels taken by the Burning Blade.', 'images/thunder.jpg', '37', '2'),
 ('Undercity', 'The Undercity is the capital city of the  Undead. It is built under the remains of the city of Lordaeron. It is foul and dark, with twisted gothic architecture and plague-green canals.', 'images/under.jpg', '19', '2');
 
-INSERT INTO dungeons ("name", "max_level", "min_level", "description", "zone_id") 
+INSERT INTO dungeons ("dungeon", "max_level", "min_level", "description", "zone_id") 
 VALUES ('Ragefire Chasm', '25', '15', 'Ragefire Chasm consists of a network of volcanic caverns that lie below the orcs'' new capital city of Orgrimmar. Recently, rumors have spread that a cult loyal to the demonic Shadow Council has taken up residence within the Chasm''s fiery depths.', '38'),
 ('The Deadmines', '25', '15', 'Once the greatest gold production center in the human lands, the Deadmines were abandoned when the Horde razed Stormwind city during the First War. Now the Defias Brotherhood has taken up residence and turned the dark tunnels into their private sanctum.', '14'),
 ('Wailing Caverns', '27', '17', 'Recently, a night elf druid named Naralex discovered a network of underground caverns within the heart of the Barrens. Dubbed the ''Wailing Caverns'', these natural caves were filled with steam fissures which produced long, mournful wails as they vented. Naralex believed he could use the caverns'' underground springs to restore lushness and fertility to the Barrens - but to do so would require siphoning the energies of the fabled Emerald Dream.', '32'),
@@ -170,7 +170,7 @@ VALUES ('Ragefire Chasm', '25', '15', 'Ragefire Chasm consists of a network of v
 ('Blackrock Depths', '60', '52', 'Once the capital city of the Dark Iron dwarves, this volcanic labyrinth now serves as the seat of power for Ragnaros the Firelord.', '6'),
 ('Scholomance', '60', '55', 'The Scholomance is housed within a series of crypts that lie beneath the ruined keep of Caer Darrow. Once owned by the noble Barov family, Caer Darrow fell to ruin following the Second War.', '11');
 
-INSERT INTO settlements ("name", "description", "zone_id") 
+INSERT INTO settlements ("town", "description", "zone_id") 
 VALUES ('Booty Bay', 'Booty Bay is a large pirate port city nestled into the cliffs surrounding a beautiful blue lagoon on the southern tip of Stranglethorn Vale.', '1'),
 ('Aerie Peak', 'Aerie Peak (or the Aerie (s)) is the capital of the Wildhammer clan of dwarves affiliated with the Alliance.', '2'),
 ('Revantusk Village', 'Revantusk Village is the only visitable settlement of the Revantusk tribe of forest trolls.', '2'),
@@ -227,7 +227,7 @@ VALUES ('Booty Bay', 'Booty Bay is a large pirate port city nestled into the cli
 ('Razor Hill', 'Razor Hill is an orcish settlement built on a crossroads in central Durotar. The southern road eventually leads to Sen''jin Village and the Valley of Trials.', '38'),
 ('Sen''jin Village', 'Sen''jin Village is a settlement of the Darkspear tribe located on the southern coast of Durotar.', '38');
 
-INSERT INTO quests ("name", "description", "level", "zone_id") 
+INSERT INTO quests ("quest", "description", "level", "zone_id") 
 VALUES ('The Green Hills of Stranglethorn', 'Collect the missing pages from The Green Hills of Stranglethorn manuscript. Once all four chapters are complete, return them to Barnil.', '40', '1'),
 ('The Bloodsail Buccaneers', 'Fleet Master Seahorn in Booty Bay wants you to kill 10 Bloodsail Swashbucklers and bring back the Bloodsail Charts and the Bloodsail Orders.', '43', '1'),
 ('Singing Blue Shards', 'Bring 10 Singing Crystal Shards to Crank Fizzlebub.', '35', '1'),
@@ -342,7 +342,7 @@ VALUES ('The Green Hills of Stranglethorn', 'Collect the missing pages from The 
 
 -- Updates the first created user to Admin status, which will be the user representing myself
 UPDATE "user"
-SET "user"."isAdmin" = 'true'
+SET "isAdmin" = 'true'
 WHERE "user"."id" = 1;
 
 -- Grabs user when they log in
@@ -357,7 +357,7 @@ VALUES ($1, $2, $3);
 
 -- Grabs capital city for display on its page
 
-SELECT capitalcities."name", capitalcities."map_image_url", capitalcities."description", factions."type", zones."name" FROM capitalcities 
+SELECT capitalcities."city", capitalcities."map_image_url", capitalcities."description", factions."type", zones."name" FROM capitalcities 
 JOIN factions ON factions."id" = capitalcities."faction_id" 
 JOIN zones ON zones."id" = capitalcities."zone_id"
 WHERE capitalcities."id" = $1;
@@ -385,7 +385,7 @@ WHERE characters."id" = $1;
 
 -- Grabs a zone after it is determined which one to grab based on the selected character's information
 
-SELECT zones."id", zones."name", zones."description", zones."map_image_url", zones."screenshot", zones."max_level", zones."min_level", factions."type", continents."name" FROM zones
+SELECT zones."id", zones."zone", zones."description", zones."map_image_url", zones."screenshot", zones."max_level", zones."min_level", factions."type", continents."landmass" FROM zones
 JOIN factions ON factions."id" = zones."faction_id"
 JOIN continents ON continents."id" = zones."continent_id"
 WHERE zones."id" = $1;
@@ -402,7 +402,7 @@ WHERE dungeons."zone_id" = $1;
 
 -- Grabs quests for display in a table on the DOM
 
-SELECT quests."id", quests."name", quests."description", quests."level", quests_characters."isCompleted" FROM quests
+SELECT quests."id", quests."quest", quests."description", quests."level", quests_characters."isCompleted" FROM quests
 JOIN quests_characters ON quests_characters."quest_id" = quests."id"
 JOIN characters ON characters."id" = quests_characters."character_id"
 WHERE characters."id" = $1 AND quests."zone_id" = $2;
@@ -410,7 +410,7 @@ WHERE characters."id" = $1 AND quests."zone_id" = $2;
 -- Updates status of quest in the table when the checkbox/button for that quest is clicked
 
 UPDATE quests_characters 
-SET quests_characters."isCompleted" = $1
+SET "isCompleted" = $1
 WHERE quests_characters."character_id" = $2 AND quests_characters."quest_id" = $3;
 
 -- Grabs all users except for the Admin for display on the Admin page
