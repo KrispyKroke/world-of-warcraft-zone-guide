@@ -46,9 +46,10 @@ CREATE TABLE quests (
 
 CREATE TABLE quests_characters (
 	"id" SERIAL PRIMARY KEY NOT NULL,
-	"isCompleted" BOOLEAN DEFAULT FALSE,
+	"isCompleted" BOOLEAN NOT NULL DEFAULT FALSE,
 	"quest_id" INTEGER REFERENCES quests,
-	"character_id" INTEGER REFERENCES characters
+	"character_id" INTEGER REFERENCES characters,
+	UNIQUE ("quest_id", "character_id")
 );
 
 CREATE TABLE dungeons (
@@ -403,9 +404,15 @@ WHERE dungeons."zone_id" = $1;
 -- Grabs quests for display in a table on the DOM
 
 SELECT quests."id", quests."quest", quests."description", quests."level", quests_characters."isCompleted" FROM quests
-JOIN quests_characters ON quests_characters."quest_id" = quests."id"
-JOIN characters ON characters."id" = quests_characters."character_id"
-WHERE characters."id" = $1 AND quests."zone_id" = $2;
+LEFT JOIN quests_characters ON quests_characters."quest_id" = quests."id" AND quests_characters."character_id" = $1
+WHERE quests."zone_id" = $2;
+
+-- Adds quests retrieved from the query above to the quests_characters table
+
+INSERT INTO quests_characters ("isCompleted", "quest_id", "character_id") 
+VALUES ('false', $1, $2),
+('false', $3, $4),
+('false', $5, $6);
 
 -- Updates status of quest in the table when the checkbox/button for that quest is clicked
 

@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const citiesRouter = require('./routes/cities.router');
 const charactersRouter = require('./routes/character.router');
 const zonesRouter = require('./routes/zones.router');
+const questsRouter = require('./routes/quests.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,7 +29,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/cities', citiesRouter);
 app.use('/api/characters', charactersRouter);
-app.use('/api/zones', zonesRouter)
+app.use('/api/zones', zonesRouter);
+app.use('/api/quests', questsRouter);
 
 // Serve static files
 app.use(express.static('build'));
