@@ -357,7 +357,7 @@ VALUES ($1, $2, $3);
 
 -- Grabs capital city for display on its page
 
-SELECT capitalcities."city", capitalcities."map_image_url", capitalcities."description", factions."type", zones."name" FROM capitalcities 
+SELECT capitalcities."city", capitalcities."map_image_url", capitalcities."description", factions."type", zones."zone" FROM capitalcities 
 JOIN factions ON factions."id" = capitalcities."faction_id" 
 JOIN zones ON zones."id" = capitalcities."zone_id"
 WHERE capitalcities."id" = $1;
@@ -371,11 +371,11 @@ VALUES ($1, $2, $3, $4, $5);
 
 SELECT characters."id", characters."name", characters."race", characters."level", factions."type" FROM characters 
 JOIN factions ON factions."id" = characters."faction_id"
-WHERE "user"."id" = $1;
+WHERE characters."user_id" = $1;
 
 -- Deletes a character when the user clicks the delete button
 
-DELETE * FROM characters 
+DELETE FROM characters 
 WHERE characters."id" = $1;
 
 -- Grabs a character for determining what zone to go to when a character clicks the select button
