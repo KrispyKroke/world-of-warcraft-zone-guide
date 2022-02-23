@@ -9,14 +9,16 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import Zone from '../Zone/Zone';
+import WorldMap from '../WorldMap/WorldMap';
+import CharacterFormAndTable from '../CharacterFormAndTable/CharacterFormAndTable';
+import AdminPage from '../AdminPage/AdminPage';
+import ZoneDetails from '../ZoneDetails/ZoneDetails';
+import CityPage from '../CityPage/CityPage';
 import LandingPage from '../LandingPage/LandingPage';
+import Quests from '../Quests/Quests';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
@@ -38,48 +40,65 @@ function App() {
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
-
-          {/* Visiting localhost:3000/about will show the about page. */}
-          <Route
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/about"
-          >
-            <AboutPage />
-          </Route>
-
-          {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:3000/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:3000/user */}
+          {/* This route goes to the Zone Page when a user clicks the select character button
+          on the Add Character Page*/}
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/zone"
           >
-            <UserPage />
+            <Zone />
           </ProtectedRoute>
+          {/* This route goes to the Zone Details page for a zone when the appropriate button
+          on the zone page is clicked*/}
+          <ProtectedRoute exact path="/details">
 
+            <ZoneDetails />
+          </ProtectedRoute>
+          {/* This route goes to the quests page for the targeted zone when the appropriate button
+          is clicked*/}
+          <ProtectedRoute exact path="/quests">
+
+            <Quests />
+          </ProtectedRoute>
+          {/* The user is taken to this page via the /map route after they log in*/}
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/map"
           >
-            <InfoPage />
+            <WorldMap />
+          </ProtectedRoute>
+          {/* When the user clicks on a city on the world map page, they are
+          transported to this component*/}
+          <ProtectedRoute exact path="/city">
+
+            <CityPage />
+          </ProtectedRoute>
+          {/* The character is taken to this component when they click the Add Character link on the 
+          nav bar*/}
+          <ProtectedRoute
+            exact
+            path="/characters"
+          >
+            <CharacterFormAndTable />
           </ProtectedRoute>
 
           <Route
             exact
             path="/login"
           >
-            {user.id ?
-              // If the user is already logged in, 
-              // redirect to the /user page
-              <Redirect to="/user" />
+            {/* Below uses conditional rendering to first check if the user is an Admin. If they are,
+            it directs them to an admin page. If not, and they are logged in as another user, they are led
+            to the map page. If they are not logged in, they are led to the welcome page.*/}
+            {user.id && user.isAdmin === true ?
+              <Redirect to="/admin" />
               :
-              // Otherwise, show the login page
-              <LoginPage />
+              (user.id ? <Redirect to="/map"/> : <LoginPage/>)
             }
+          </Route>
+          {/* This route leads to the Admin Page*/}
+          <Route exact path="/admin">
+
+            <AdminPage />
           </Route>
 
           <Route
@@ -88,8 +107,8 @@ function App() {
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+              // redirect them to the /map page
+              <Redirect to="/map" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
@@ -101,11 +120,8 @@ function App() {
             path="/home"
           >
             {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/home" />
               :
-              // Otherwise, show the Landing page
               <LandingPage />
             }
           </Route>
@@ -115,7 +131,6 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
       </div>
     </Router>
   );
