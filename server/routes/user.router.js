@@ -50,6 +50,10 @@ router.post('/logout', (req, res) => {
 
 // Retrieves all users who are not Admins for display on the Admin Page
 router.get('/all', rejectUnauthenticated, (req, res) => {
+  if (req.user.isAdmin === false) {
+    res.sendStatus(403);
+    return;
+  }
   const queryText = `SELECT * FROM "user"
   WHERE "user"."isAdmin" = 'false';`;
   pool.query(queryText).then(response => {
@@ -63,6 +67,10 @@ router.get('/all', rejectUnauthenticated, (req, res) => {
 // Deletes a targeted user from the database when the delete button is clicked for
 // the user's row on the Admin Page
 router.delete('/remove/:id', rejectUnauthenticated, (req, res) => {
+  if (req.user.isAdmin === false) {
+    res.sendStatus(403);
+    return;
+  }
   const user = req.params.id;
   const queryText = `DELETE FROM "user"
   WHERE "user"."id" = $1;`;
