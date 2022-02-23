@@ -1,4 +1,5 @@
 const express = require('express');
+const { reset } = require('nodemon');
 const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
@@ -53,6 +54,20 @@ router.get('/all', rejectUnauthenticated, (req, res) => {
   WHERE "user"."isAdmin" = 'false';`;
   pool.query(queryText).then(response => {
     res.send(response.rows);
+  }).catch(error => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+});
+
+// Deletes a targeted user from the database when the delete button is clicked for
+// the user's row on the Admin Page
+router.delete('/remove/:id', rejectUnauthenticated, (req, res) => {
+  const user = req.params.id;
+  const queryText = `DELETE FROM "user"
+  WHERE "user"."id" = $1;`;
+  pool.query(queryText, [user]).then(response => {
+    res.sendStatus(204);
   }).catch(error => {
     console.log(error);
     res.sendStatus(500);

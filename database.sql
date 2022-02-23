@@ -11,7 +11,7 @@ CREATE TABLE characters (
 	"race" VARCHAR(255) NOT NULL,
 	"level" INTEGER NOT NULL,
 	"faction_id" INTEGER REFERENCES factions,
-	"user_id" INTEGER REFERENCES "user"
+	"user_id" INTEGER REFERENCES "user" ON DELETE CASCADE
 );
 
 CREATE TABLE factions (
@@ -48,7 +48,7 @@ CREATE TABLE quests_characters (
 	"id" SERIAL PRIMARY KEY NOT NULL,
 	"isCompleted" BOOLEAN NOT NULL DEFAULT FALSE,
 	"quest_id" INTEGER REFERENCES quests,
-	"character_id" INTEGER REFERENCES characters,
+	"character_id" INTEGER REFERENCES characters ON DELETE CASCADE,
 	UNIQUE ("quest_id", "character_id")
 );
 
@@ -424,3 +424,7 @@ WHERE quests_characters."character_id" = $2 AND quests_characters."quest_id" = $
 
 SELECT * FROM "user"
 WHERE "user"."isAdmin" = 'false';
+
+-- Deletes a specific user from the database and table on the Admin page when the Admin clicks the delete button
+DELETE FROM "user"
+WHERE "user"."id" = $1;
