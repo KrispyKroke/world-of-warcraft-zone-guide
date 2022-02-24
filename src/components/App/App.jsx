@@ -44,19 +44,19 @@ function App() {
           on the Add Character Page*/}
           <ProtectedRoute
             exact
-            path="/zone"
+            path="/zone/:zoneId"
           >
             <Zone />
           </ProtectedRoute>
           {/* This route goes to the Zone Details page for a zone when the appropriate button
           on the zone page is clicked*/}
-          <ProtectedRoute exact path="/details">
+          <ProtectedRoute exact path="/details/:zoneId">
 
             <ZoneDetails />
           </ProtectedRoute>
           {/* This route goes to the quests page for the targeted zone when the appropriate button
           is clicked*/}
-          <ProtectedRoute exact path="/quests">
+          <ProtectedRoute exact path="/quests/:charId/:zoneId">
 
             <Quests />
           </ProtectedRoute>
@@ -69,7 +69,7 @@ function App() {
           </ProtectedRoute>
           {/* When the user clicks on a city on the world map page, they are
           transported to this component*/}
-          <ProtectedRoute exact path="/city">
+          <ProtectedRoute exact path="/city/:cityId">
 
             <CityPage />
           </ProtectedRoute>
