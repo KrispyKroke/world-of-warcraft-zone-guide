@@ -6,6 +6,7 @@ import citiesSaga from './cities.saga';
 import charactersSaga from './characters.saga';
 import characterSaga from './character.saga';
 import zonesSaga from './zones.saga';
+import questsSaga from './quests.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -22,6 +23,7 @@ export default function* rootSaga() {
     citiesSaga(), 
     charactersSaga(),
     characterSaga(),
-    zonesSaga()
+    zonesSaga(),
+    questsSaga()
   ]);
 }

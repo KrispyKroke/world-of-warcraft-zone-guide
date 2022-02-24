@@ -5,6 +5,7 @@ import city from './cities.reducer';
 import characters from './characters.reducer';
 import character from './character.reducer';
 import zone from './zones.reducer';
+import quests from './quests.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   city, // this is the reducer which handles the information for the capital city page
   characters,  // this reducer will handle the storage of characters for a specific user
   character,  // this reducer will store a single character for determining which zone to go to
-  zone // this reducer will store the information for a specific zone
+  zone, // this reducer will store the information for a specific zone
+  quests // this reducer will store the quests for a specific character in a specific zone
 });
 
 export default rootReducer;
