@@ -6,6 +6,7 @@ import characters from './characters.reducer';
 import character from './character.reducer';
 import zone from './zones.reducer';
 import quests from './quests.reducer';
+import admin from './admin.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   characters,  // this reducer will handle the storage of characters for a specific user
   character,  // this reducer will store a single character for determining which zone to go to
   zone, // this reducer will store the information for a specific zone
-  quests // this reducer will store the quests for a specific character in a specific zone
+  quests, // this reducer will store the quests for a specific character in a specific zone
+  admin // this reducer handles the storage of non-admin users for display on the admin page
 });
 
 export default rootReducer;
