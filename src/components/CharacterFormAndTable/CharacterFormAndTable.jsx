@@ -32,6 +32,12 @@ function CharacterFormAndTable() {
     }
     const race = charRace;
     const level = Number(charLevel);
+    // This performs further input validation in order to ensure that the level of the character
+    // is between 1 and 60.
+    if (level < 1 || level > 60) {
+      alert('Please enter a level between 1 and 60!');
+      return;
+    }
     const name = charName;
     let faction_id;
     if (race === 'Orc' || race === 'Troll' || race === 'Tauren' || race === 'Undead') {
