@@ -6,17 +6,17 @@ import {put, takeLatest} from 'redux-saga/effects';
 function* addCharacter(action) {
     try {
         yield axios.post('/api/characters/add', {name: action.payload.name, race: action.payload.race,
-        level: action.payload.level, faction_id: action.payload.faction_id, user_id: action.payload.user_id});
-        yield put({ type : 'FETCH_CHARACTERS', payload: action.payload.user_id});
+        level: action.payload.level, faction_id: action.payload.faction_id});
+        yield put({ type : 'FETCH_CHARACTERS'});
     } catch (error) {
         console.log(error);
     }
 }
 // This saga is responsible for grabbing all characters for a user from the database. It then
 // dispatches to the characters reducer to populate it with those characters.
-function* fetchCharacters(action) {
+function* fetchCharacters() {
     try {
-        const characters = yield axios.get(`/api/characters/${action.payload.user_id}`);
+        const characters = yield axios.get('/api/characters/');
         yield put({type: 'SET_CHARACTERS', payload: characters.data});
     } catch (error) {
         console.log(error);

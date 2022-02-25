@@ -13,7 +13,7 @@ router.post('/add', rejectUnauthenticated, (req, res) => {
     const queryText = `INSERT INTO characters ("name", "race", "level", "faction_id", "user_id")
     VALUES ($1, $2, $3, $4, $5);`;
     pool.query(queryText, 
-    [character.name, character.race, character.level, character.faction_id, character.user_id]).then(response => {
+    [character.name, character.race, character.level, character.faction_id, req.user.id]).then(response => {
         res.sendStatus(201);
     }).catch(error => {
         console.log(error);
@@ -22,12 +22,11 @@ router.post('/add', rejectUnauthenticated, (req, res) => {
 });
 
 // This retrieves all characters for a given user for display in a table on the DOM
-router.get('/:id', rejectUnauthenticated, (req, res) => {
-    const user = req.params.id;
+router.get('/', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT characters."id", characters."name", characters."race", characters."level", factions."type" FROM characters 
     JOIN factions ON factions."id" = characters."faction_id"
     WHERE characters."user_id" = $1;`;
-    pool.query(queryText, [user]).then(response => {
+    pool.query(queryText, [req.user.id]).then(response => {
         res.send(response.rows);
     }).catch(error => {
         console.log(error);
