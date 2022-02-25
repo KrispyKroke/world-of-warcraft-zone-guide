@@ -15,6 +15,13 @@ function CharacterFormAndTable() {
     dispatch({type: 'FETCH_CHARACTERS'});
   }, []);
 
+
+  // This function makes a dispatch to delete a character by id from the database.
+  function removeCharacter(id) {
+    dispatch({type: 'DELETE_CHARACTER', payload: {id}});
+  }
+
+
   // This function handles the POST of a character to the back-end.  It uses input validation
   // as well as the checking of races to determine which faction each character belongs to.
   function addCharacter(event) {
@@ -75,7 +82,7 @@ function CharacterFormAndTable() {
                   <td>{char.level}</td>
                   <td>{char.type}</td>
                   <td><button>Select</button></td>
-                  <td><button>Delete</button></td>
+                  <td><button onClick={() => removeCharacter(char.id)}>Delete</button></td>
                 </tr>
               );
             })}
