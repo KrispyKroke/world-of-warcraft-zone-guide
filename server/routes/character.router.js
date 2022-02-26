@@ -49,7 +49,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 // This grabs a specific character that is selected by the user on the front-end.
-// This character's information is used to determine which zone page to transport the user to.
+// This character's information is used to determine which zone page to transport the user to, and is also needed for the quests page.
 router.get('/single/:id', rejectUnauthenticated, (req, res) => {
     const character = req.params.id;
     const queryText = `SELECT * FROM characters 
