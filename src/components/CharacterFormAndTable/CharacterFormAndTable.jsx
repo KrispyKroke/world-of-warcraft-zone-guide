@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import { captureRejections } from 'pg/lib/query';
-import e from 'express';
 
 function CharacterFormAndTable() {
   // Local state for tracking inputs below
