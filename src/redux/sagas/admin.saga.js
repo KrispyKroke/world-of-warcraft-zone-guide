@@ -7,7 +7,9 @@ function* fetchUsers() {
         const users = yield axios.get('/api/user/all');
         yield put({type: 'SET_USERS', payload: users.data});
     } catch (error) {
+        // If the user is not an admin and they go to the url /admin manually, they will see an empty page.
         console.log(error);
+        yield put({type: 'SET_USERS', payload: []});
     }
 }
 
