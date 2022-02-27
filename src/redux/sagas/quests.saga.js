@@ -8,16 +8,21 @@ import {put, takeLatest} from 'redux-saga/effects';
 function* fetchQuests(action) {
     try {
         const quests = yield axios.get(`/api/quests/${action.payload.charId}/${action.payload.zoneId}`);
-        quests = quests.data;
+        let returnedQuests = quests.data;
         const character = action.payload.charId;
-        const quest1 = quests[0].id;
-        const quest2 = quests[1].id;
-        const quest3 = quests[2].id;
+        const quest1 = returnedQuests[0].id;
+        const quest2 = returnedQuests[1].id;
+        const quest3 = returnedQuests[2].id;
         yield axios.post('/api/quests/populate', {quest1, quest2, quest3, character});
         const newQuests = yield axios.get(`/api/quests/${action.payload.charId}/${action.payload.zoneId}`);
         yield put({type: 'SET_QUESTS', payload: newQuests.data});
-    } catch {
+    } catch (error) {
+        // If the quests are already in the quests_characters table, the program will catch the error in the POST
+        // and just perform a GET request to get the quests for the zone and character.  It will then store these quests
+        // in the quest reducer for display on the DOM.
         console.log(error);
+        const quests = yield axios.get(`/api/quests/${action.payload.charId}/${action.payload.zoneId}`);
+        yield put({type: 'SET_QUESTS', payload: quests.data});
     }
 }
 
@@ -27,7 +32,7 @@ function* updateQuest(action) {
     try {
         yield axios.put('/api/quests/status', {updatedStatus: action.payload.updatedStatus, 
         character: action.payload.character, quest: action.payload.quest});
-        const quests = yield axios.get(`/api/quests/${action.payload.charId}/${action.payload.zoneId}`);
+        const quests = yield axios.get(`/api/quests/${action.payload.character}/${action.payload.zoneId}`);
         yield put({type: 'SET_QUESTS', payload: quests.data});
     } catch (error) {
         console.log(error);

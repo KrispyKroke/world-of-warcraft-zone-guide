@@ -26,7 +26,7 @@ function Zone() {
       <h3>Continent: {selectedZone[0]?.landmass}</h3>
       <h3>Level Range: {selectedZone[0]?.min_level} - {selectedZone[0]?.max_level}</h3>
       <button onClick={() => history.push(`/details/${id}/${charId}`)}>More Details</button>
-      <button>Quest List</button>
+      <button onClick={() => history.push(`/quests/${charId}/${id}`)}>Quest List</button>
     </div>
   );
 }
