@@ -11,14 +11,18 @@ function ZoneDetails() {
   const selectedTowns = useSelector(store => store.zone.settlementReducer);
   const selectedDungeon = useSelector(store => store.zone.dungeonReducer);
   const id = params.zoneId;
+  const charId = params.charId;
 
   useEffect(() => {
     dispatch({type: 'FETCH_SETTLEMENTS', payload: {id}});
     dispatch({type: 'FETCH_DUNGEON', payload: {id}});
     dispatch({type: 'FETCH_ZONE', payload: {id}});
+    dispatch({type: 'FETCH_CHARACTER', payload: {id: charId}});
   }, []);
-  // This page makes three dispatches to grab information about the selected zone, including all dungeons and
-  // settlements located within. It then displays the dungeon and settlement information, along with a screenshot of the zone, on the DOM.
+  // This page makes four dispatches to grab information about the selected zone, including all dungeons and
+  // settlements located within. It then displays the dungeon and settlement information, along with a screenshot of the zone, on the DOM. The fourth
+  // dispatch is used to make sure that the character reducer stays populated on refresh of the page. This information is needed for the quest
+  // list page.
   return (
     <div className="detailsContainer">
       <h2>More Details about {selectedZone[0]?.zone}:</h2>
@@ -41,7 +45,7 @@ function ZoneDetails() {
           <h3>Level Range: {selectedDungeon[0]?.min_level} - {selectedDungeon[0]?.max_level}</h3>
         </>
       }
-      <button onClick={() => history.push(`/zone/${id}`)}>Go Back</button>
+      <button onClick={() => history.push(`/zone/${id}/${charId}`)}>Go Back</button>
     </div>
   );
 }

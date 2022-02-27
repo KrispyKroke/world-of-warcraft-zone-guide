@@ -44,13 +44,13 @@ function App() {
           on the Add Character Page*/}
           <ProtectedRoute
             exact
-            path="/zone/:zoneId"
+            path="/zone/:zoneId/:charId"
           >
             <Zone />
           </ProtectedRoute>
           {/* This route goes to the Zone Details page for a zone when the appropriate button
           on the zone page is clicked*/}
-          <ProtectedRoute exact path="/details/:zoneId">
+          <ProtectedRoute exact path="/details/:zoneId/:charId">
 
             <ZoneDetails />
           </ProtectedRoute>

@@ -9,9 +9,11 @@ function Zone() {
   const selectedZone = useSelector(store => store.zone.zoneReducer);
   const params = useParams();
   const id = params.zoneId;
+  const charId = params.charId;
 
   useEffect(() => {
     dispatch({type: 'FETCH_ZONE', payload: {id}});
+    dispatch({type: 'FETCH_CHARACTER', payload: {id: charId}});
   }, []);
 
   // This page is responsible for grabbing the selected zone information by id and displaying it on the DOM.
@@ -23,7 +25,7 @@ function Zone() {
       <h3>Faction: {selectedZone[0]?.type}</h3>
       <h3>Continent: {selectedZone[0]?.landmass}</h3>
       <h3>Level Range: {selectedZone[0]?.min_level} - {selectedZone[0]?.max_level}</h3>
-      <button onClick={() => history.push(`/details/${id}`)}>More Details</button>
+      <button onClick={() => history.push(`/details/${id}/${charId}`)}>More Details</button>
       <button>Quest List</button>
     </div>
   );
