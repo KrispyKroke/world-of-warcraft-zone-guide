@@ -40,8 +40,10 @@ function ZoneDetails() {
       {selectedDungeon[0]?.id &&
         <>
           <h2>Dungeon: </h2>
-          <h3>{selectedDungeon[0]?.dungeon}</h3>
-          <h3>{selectedDungeon[0]?.description}</h3>
+          <ul>
+            <li><h3>{selectedDungeon[0]?.dungeon}</h3></li>
+          </ul>
+          <p>{selectedDungeon[0]?.description}</p>
           <h3>Level Range: {selectedDungeon[0]?.min_level} - {selectedDungeon[0]?.max_level}</h3>
         </>
       }

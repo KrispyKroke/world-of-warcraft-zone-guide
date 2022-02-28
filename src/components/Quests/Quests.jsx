@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useParams, useHistory} from 'react-router-dom';
+import Table from 'react-bootstrap/Table';
 
 function Quests() {
 
@@ -24,7 +25,7 @@ function Quests() {
   return (
     <div className="questContainer">
       <h2>Quests for {selectedCharacter[0]?.name} in {selectedZone[0]?.zone}:</h2>
-      <table>
+      <Table striped bordered>
         <thead>
           <tr><th>Name</th><th>Description</th><th>Level</th><th>Zone</th><th>Status</th></tr>
         </thead>
@@ -36,7 +37,7 @@ function Quests() {
             );
           })}
         </tbody>
-      </table>
+      </Table>
       <button onClick={() => history.push(`/zone/${zoneId}/${charId}`)}>Go Back</button>
     </div>
   );

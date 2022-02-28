@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
+import Table from 'react-bootstrap/Table';
 
 function CharacterFormAndTable() {
   // Local state for tracking inputs below
@@ -194,7 +195,7 @@ function CharacterFormAndTable() {
       </div>
       {/* Below is the table holding all character data for a given user*/}
       <div className="tableContainer">
-        <table>
+        <Table striped bordered>
           <thead>
             <tr><th>Name</th><th>Race</th><th>Level</th><th>Faction</th><th>Choose Character</th><th>Delete Character</th></tr>
           </thead>
@@ -212,7 +213,7 @@ function CharacterFormAndTable() {
               );
             })}
           </tbody>
-        </table>
+        </Table>
       </div>
     </>
   );

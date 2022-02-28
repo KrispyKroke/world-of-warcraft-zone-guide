@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-
+import Table from 'react-bootstrap/Table';
 
 
 function AdminPage() {
@@ -21,7 +21,7 @@ function AdminPage() {
         <>
             {currentUser.isAdmin &&
                 <div className="adminContainer">
-                    <table>
+                    <Table striped bordered>
                         <thead>
                             <tr><th>ID</th><th>Username</th><th>Remove User</th></tr>
                         </thead>
@@ -32,7 +32,7 @@ function AdminPage() {
                                 );
                             })}
                         </tbody>
-                    </table>
+                    </Table>
                 </div>
         }
         </>
