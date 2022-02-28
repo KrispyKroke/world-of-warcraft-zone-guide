@@ -9,6 +9,24 @@ body {
   margin: 0px;
 }
 
+h1, h2, h3, p {
+  font-weight: 700;
+}
+
+
+body::before {
+  content:"";
+  background-image: url('/public/images/wow_background_image.jpg');
+  opacity:0.6;
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  width:auto;
+  height:auto;
+  z-index:-3;
+}
 
 img {
   display: inline-block;

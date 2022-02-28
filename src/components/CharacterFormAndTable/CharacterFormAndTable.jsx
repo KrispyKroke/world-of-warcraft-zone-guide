@@ -196,7 +196,7 @@ function CharacterFormAndTable() {
       </div>
       {/* Below is the table holding all character data for a given user*/}
       <div className="tableContainer">
-        <Table striped bordered>
+        <Table striped bordered variant="dark">
           <thead>
             <tr><th>Name</th><th>Race</th><th>Level</th><th>Faction</th><th>Choose Character</th><th>Delete Character</th></tr>
           </thead>

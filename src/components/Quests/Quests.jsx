@@ -26,7 +26,7 @@ function Quests() {
   return (
     <div className="questContainer">
       <h2>Quests for {selectedCharacter[0]?.name} in {selectedZone[0]?.zone}:</h2>
-      <Table striped bordered>
+      <Table striped bordered variant="dark">
         <thead>
           <tr><th>Name</th><th>Description</th><th>Level</th><th>Zone</th><th>Status</th></tr>
         </thead>

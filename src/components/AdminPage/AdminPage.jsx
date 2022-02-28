@@ -21,7 +21,7 @@ function AdminPage() {
         <>
             {currentUser.isAdmin &&
                 <div className="adminContainer">
-                    <Table striped bordered>
+                    <Table striped bordered variant="dark">
                         <thead>
                             <tr><th>ID</th><th>Username</th><th>Remove User</th></tr>
                         </thead>

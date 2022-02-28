@@ -47,7 +47,7 @@ CREATE TABLE quests (
 CREATE TABLE quests_characters (
 	"id" SERIAL PRIMARY KEY NOT NULL,
 	"isCompleted" BOOLEAN NOT NULL DEFAULT FALSE,
-	"quest_id" INTEGER REFERENCES quests,
+	"quest_id" INTEGER REFERENCES quests ON DELETE CASCADE,
 	"character_id" INTEGER REFERENCES characters ON DELETE CASCADE,
 	UNIQUE ("quest_id", "character_id")
 );
