@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useParams, useHistory} from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 function Quests() {
 
@@ -33,12 +34,12 @@ function Quests() {
           {selectedQuests.map(task => {
             return (
               <tr key={task?.id}><td>{task?.quest}</td><td>{task?.description}</td>
-              <td>{task?.level}</td><td>{selectedZone[0]?.zone}</td><td><button onClick={() => dispatch({type: 'UPDATE_QUEST', payload: {updatedStatus: !task?.isCompleted, character: charId, quest: task?.id, zoneId}})}>Mark</button>{task?.isCompleted ? 'Complete' : 'Incomplete'}</td></tr>
+              <td>{task?.level}</td><td>{selectedZone[0]?.zone}</td><td><Button className="selectBtn" variant="primary" onClick={() => dispatch({type: 'UPDATE_QUEST', payload: {updatedStatus: !task?.isCompleted, character: charId, quest: task?.id, zoneId}})}>Mark</Button>{task?.isCompleted ? 'Complete' : 'Incomplete'}</td></tr>
             );
           })}
         </tbody>
       </Table>
-      <button onClick={() => history.push(`/zone/${zoneId}/${charId}`)}>Go Back</button>
+      <Button variant="primary" onClick={() => history.push(`/zone/${zoneId}/${charId}`)}>Go Back</Button>
     </div>
   );
 }

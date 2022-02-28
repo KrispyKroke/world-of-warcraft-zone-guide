@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useParams, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
+import Button from 'react-bootstrap/Button';
 
 function Zone() {
 
@@ -25,8 +26,8 @@ function Zone() {
       <h3>Faction: {selectedZone[0]?.type}</h3>
       <h3>Continent: {selectedZone[0]?.landmass}</h3>
       <h3>Level Range: {selectedZone[0]?.min_level} - {selectedZone[0]?.max_level}</h3>
-      <button onClick={() => history.push(`/details/${id}/${charId}`)}>More Details</button>
-      <button onClick={() => history.push(`/quests/${charId}/${id}`)}>Quest List</button>
+      <Button variant="primary" onClick={() => history.push(`/details/${id}/${charId}`)}>More Details</Button>
+      <Button variant="primary" onClick={() => history.push(`/quests/${charId}/${id}`)}>Quest List</Button>
     </div>
   );
 }

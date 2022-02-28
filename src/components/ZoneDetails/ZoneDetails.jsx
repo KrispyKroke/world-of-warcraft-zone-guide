@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useParams, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
+import Button from 'react-bootstrap/Button';
 
 function ZoneDetails() {
 
@@ -47,7 +48,7 @@ function ZoneDetails() {
           <h3>Level Range: {selectedDungeon[0]?.min_level} - {selectedDungeon[0]?.max_level}</h3>
         </>
       }
-      <button onClick={() => history.push(`/zone/${id}/${charId}`)}>Go Back</button>
+      <Button variant="primary" onClick={() => history.push(`/zone/${id}/${charId}`)}>Go Back</Button>
     </div>
   );
 }

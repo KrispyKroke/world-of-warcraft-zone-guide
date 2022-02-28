@@ -9,6 +9,7 @@ body {
   margin: 0px;
 }
 
+
 img {
   display: inline-block;
   max-width: 100%;
@@ -25,6 +26,18 @@ Container
 /* --------------------------------------------------------------------------------
 Button
 -------------------------------------------------------------------------------- */
+
+.secondary {
+  background-color: grey !important;
+}
+
+.selectBtn {
+  background-color: limegreen !important;
+}
+
+.deleteBtn {
+  background-color: red !important;
+}
 
 .btn {
   display: inline-block;

@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 function CharacterFormAndTable() {
   // Local state for tracking inputs below
@@ -207,8 +208,8 @@ function CharacterFormAndTable() {
                   <td>{char.race}</td>
                   <td>{char.level}</td>
                   <td>{char.type}</td>
-                  <td><button onClick={() => selectCharacter(char)}>Select</button></td>
-                  <td><button onClick={() => removeCharacter(char.id)}>Delete</button></td>
+                  <td><Button className="selectBtn" variant="success" onClick={() => selectCharacter(char)}>Select</Button></td>
+                  <td><Button className="deleteBtn" variant="danger" onClick={() => removeCharacter(char.id)}>Delete</Button></td>
                 </tr>
               );
             })}

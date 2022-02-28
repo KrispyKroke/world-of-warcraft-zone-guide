@@ -1,5 +1,6 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 function WorldMap() {
 
@@ -10,15 +11,14 @@ function WorldMap() {
   return (
     <div className="container">
       <img src="images/world_map.jpg" />
-      <button onClick={() =>  history.push(`/city/1`)}>Darnassus</button>
-      <button onClick={() =>  history.push(`/city/2`)}>Ironforge</button>
-      <button onClick={() =>  history.push(`/city/3`)}>Stormwind City</button>
-      <button onClick={() =>  history.push(`/city/4`)}>Orgrimmar</button>
-      <button onClick={() =>  history.push(`/city/5`)}>Thunder Bluff</button>
-      <button onClick={() =>  history.push(`/city/6`)}>Undercity</button>
+      <Button className="secondary" variant="secondary" onClick={() =>  history.push(`/city/1`)}>Darnassus</Button>
+      <Button className="secondary" variant="secondary" onClick={() =>  history.push(`/city/2`)}>Ironforge</Button>
+      <Button className="secondary" variant="secondary" onClick={() =>  history.push(`/city/3`)}>Stormwind City</Button>
+      <Button className="secondary" variant="secondary" onClick={() =>  history.push(`/city/4`)}>Orgrimmar</Button>
+      <Button className="secondary" variant="secondary" onClick={() =>  history.push(`/city/5`)}>Thunder Bluff</Button>
+      <Button className="secondary" variant="secondary" onClick={() =>  history.push(`/city/6`)}>Undercity</Button>
     </div>
   );
 }
 
-// this allows us to use <App /> in index.js
 export default WorldMap;
