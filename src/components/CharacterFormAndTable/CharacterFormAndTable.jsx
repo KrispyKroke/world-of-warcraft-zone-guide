@@ -144,8 +144,16 @@ function CharacterFormAndTable() {
 
 
   // This function handles the POST of a character to the back-end.  It uses input validation
-  // as well as the checking of races to determine which faction each character belongs to.
+  // as well as the checking of races to determine which faction each character belongs to. It also only allows 20 characters per user
+  // to be added to the user's list. I decided to impose a restriction on the number of characters for each user because the game
+  // only allows a certain number of characters per user as well.
   function addCharacter(event) {
+    if (characters.length === 20) {
+      alert('Please remove a character before adding a new one. You are only allowed to have 20 characters per account!');
+      setCharName('');
+      setCharLevel('');
+      return;
+    }
     event.preventDefault();
     if (charName === '' || charLevel === '') {
       alert('Please fill out all inputs!');
@@ -191,7 +199,7 @@ function CharacterFormAndTable() {
             <option value="Night Elf">Night Elf</option>
           </select>
           <input type="number" placeholder="level" value={charLevel} onChange={event => setCharLevel(event.target.value)} />
-          <button>Add Character</button>
+          <button className="addCharBtn">Add Character</button>
         </form>
       </div>
       {/* Below is the table holding all character data for a given user*/}
