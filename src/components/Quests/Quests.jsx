@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useParams, useHistory} from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 
 function Quests() {
 
@@ -34,7 +35,7 @@ function Quests() {
           {selectedQuests.map(task => {
             return (
               <tr key={task?.id}><td>{task?.quest}</td><td>{task?.description}</td>
-              <td>{task?.level}</td><td>{selectedZone[0]?.zone}</td><td><Button className="selectBtn" variant="primary" onClick={() => dispatch({type: 'UPDATE_QUEST', payload: {updatedStatus: !task?.isCompleted, character: charId, quest: task?.id, zoneId}})}>Mark</Button>{task?.isCompleted ? 'Complete' : 'Incomplete'}</td></tr>
+              <td>{task?.level}</td><td>{selectedZone[0]?.zone}</td><td><ToggleButton id="toggle-check" type="checkbox" variant="outline-success" checked={task?.isCompleted} value="1" variant="outline-success" onClick={() => dispatch({type: 'UPDATE_QUEST', payload: {updatedStatus: !task?.isCompleted, character: charId, quest: task?.id, zoneId}})}>{task?.isCompleted ? 'Complete' : 'Incomplete'}</ToggleButton></td></tr>
             );
           })}
         </tbody>
