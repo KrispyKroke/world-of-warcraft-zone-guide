@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Table from 'react-bootstrap/Table';
-
+import Button from 'react-bootstrap/Button';
 
 function AdminPage() {
 
@@ -28,7 +28,7 @@ function AdminPage() {
                         <tbody>
                             {allUsers.map(person => {
                                 return (
-                                    <tr key={person?.id}><td>{person?.id}</td><td>{person?.username}</td><td><button onClick={() => dispatch({type: 'DELETE_ACCOUNT', payload: {id: person?.id}})}>Delete</button></td></tr>
+                                    <tr key={person?.id}><td>{person?.id}</td><td>{person?.username}</td><td><Button className="deleteBtn" variant="danger" onClick={() => dispatch({type: 'DELETE_ACCOUNT', payload: {id: person?.id}})}>Delete</Button></td></tr>
                                 );
                             })}
                         </tbody>

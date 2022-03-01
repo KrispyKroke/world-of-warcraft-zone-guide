@@ -9,7 +9,7 @@ function WorldMap() {
   // Below is a world map of WoW Classic.  There are buttons for each capital city which 
   // transport the user to a page for each city depending on which button is clicked.
   return (
-    <div className="container">
+    <div className="mapContainer">
       <img src="images/world_map.jpg" />
       <Button className="secondary" variant="secondary" onClick={() =>  history.push(`/city/1`)}>Darnassus</Button>
       <Button className="secondary" variant="secondary" onClick={() =>  history.push(`/city/2`)}>Ironforge</Button>

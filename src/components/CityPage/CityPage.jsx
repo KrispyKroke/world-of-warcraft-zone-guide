@@ -23,7 +23,7 @@ function CityPage() {
             <h3>Faction: {city[0]?.type}</h3>
             <h3>Zone: {city[0]?.zone}</h3>
             <img src={city[0]?.map_image_url} />
-            <p>{city[0]?.description}</p>
+            <h4>{city[0]?.description}</h4>
         </div>
     );
 }

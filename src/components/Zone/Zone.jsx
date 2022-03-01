@@ -22,7 +22,7 @@ function Zone() {
     <div className="zoneContainer">
       <h2>{selectedZone[0]?.zone}</h2>
       <img src={selectedZone[0]?.map_image_url} />
-      <p>{selectedZone[0]?.description}</p>
+      <h4>{selectedZone[0]?.description}</h4>
       <h3>Faction: {selectedZone[0]?.type}</h3>
       <h3>Continent: {selectedZone[0]?.landmass}</h3>
       <h3>Level Range: {selectedZone[0]?.min_level} - {selectedZone[0]?.max_level}</h3>

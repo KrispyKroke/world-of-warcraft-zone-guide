@@ -32,7 +32,7 @@ function ZoneDetails() {
       <ul>
         {selectedTowns.map(town => {
           return (
-            <li key={town?.id}><h3>{town?.town}</h3>{town?.description}</li>
+            <li key={town?.id}><h3>{town?.town}</h3><p>{town?.description}</p></li>
           );
         })}
       </ul>
