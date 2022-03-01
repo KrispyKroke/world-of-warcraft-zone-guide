@@ -10,7 +10,7 @@ function WorldMap() {
   // transport the user to a page for each city depending on which button is clicked.
   return (
     <div className="mapContainer">
-      <img src="images/world_map.jpg" />
+      <img className="worldMap" src="images/world_map.jpg" />
       <Button className="secondary" variant="secondary" onClick={() =>  history.push(`/city/1`)}>Darnassus</Button>
       <Button className="secondary" variant="secondary" onClick={() =>  history.push(`/city/2`)}>Ironforge</Button>
       <Button className="secondary" variant="secondary" onClick={() =>  history.push(`/city/3`)}>Stormwind City</Button>

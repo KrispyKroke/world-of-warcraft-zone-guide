@@ -186,8 +186,9 @@ function CharacterFormAndTable() {
       <div className="formContainer">
         <h2>Add a Character</h2>
         <form onSubmit={(event) => addCharacter(event)}>
+          <label>What is your character's name?</label>
           <input type="text" placeholder="name" value={charName} onChange={event => setCharName(event.target.value)} />
-          <label>Choose a Race: </label>
+          <label>What is their race?</label>
           <select onChange={event => setCharRace(event.target.value)} defaultValue={charRace} name="races" id="race">
             <option value="Orc">Orc</option>
             <option value="Troll">Troll</option>
@@ -198,6 +199,7 @@ function CharacterFormAndTable() {
             <option value="Gnome">Gnome</option>
             <option value="Night Elf">Night Elf</option>
           </select>
+          <label>What level are they?</label>
           <input type="number" placeholder="level" value={charLevel} onChange={event => setCharLevel(event.target.value)} />
           <button className="addCharBtn">Add Character</button>
         </form>
