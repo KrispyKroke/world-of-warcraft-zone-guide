@@ -148,17 +148,19 @@ function CharacterFormAndTable() {
   // to be added to the user's list. I decided to impose a restriction on the number of characters for each user because the game
   // only allows a certain number of characters per user as well.
   function addCharacter(event) {
+    event.preventDefault();
     if (characters.length === 20) {
       alert('Please remove a character before adding a new one. You are only allowed to have 20 characters per account!');
       setCharName('');
       setCharLevel('');
       return;
     }
-    event.preventDefault();
+
     if (charName === '' || charLevel === '') {
       alert('Please fill out all inputs!');
       return;
     }
+
     const race = charRace;
     const level = Number(charLevel);
     // This performs further input validation in order to ensure that the level of the character
@@ -218,7 +220,7 @@ function CharacterFormAndTable() {
                   <td>{char.race}</td>
                   <td>{char.level}</td>
                   <td>{char.type}</td>
-                  <td><Button className="selectBtn" variant="success" onClick={() => selectCharacter(char)}>Select</Button></td>
+                  <td><Button className="selectBtn" variant="success" onClick={() => selectCharacter(char)}>Go to Zone</Button></td>
                   <td><Button className="deleteBtn" variant="danger" onClick={() => removeCharacter(char.id)}>Delete</Button></td>
                 </tr>
               );
