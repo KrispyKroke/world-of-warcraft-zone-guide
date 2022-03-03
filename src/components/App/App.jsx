@@ -22,6 +22,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import Quests from '../Quests/Quests';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Footer from '../Footer/Footer';
 
 import './App.css';
 
@@ -133,6 +134,7 @@ function App() {
               <h1>404</h1>
             </Route>
           </Switch>
+          <Footer />
         </div>
       </Router>
     </Container>

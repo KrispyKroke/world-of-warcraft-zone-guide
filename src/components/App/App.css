@@ -1,6 +1,7 @@
 html,
 body,
 #react-root {
+  margin: 0;
   height: 100%;
 }
 
@@ -9,10 +10,13 @@ body {
   margin: 0px;
 }
 
-h1, h2, h3, h4, p {
+h1, h2, h3, h4, p, footer {
   font-weight: 700;
   padding: 3px;
+  color: black;
 }
+
+
 
 label {
   font-weight: 700;
@@ -25,10 +29,10 @@ input, select {
   border-radius: 10%;
 }
 
-body::before {
-  content:"";
-  background-image: url('/public/images/wow_background_image.jpg');
-  opacity:0.6;
+html::before {
+  content: "";
+  background: url('/public/images/wow_background_image.jpg');
+  opacity:0.6; 
   position:absolute;
   background-size: cover;
   top:0;
@@ -36,8 +40,10 @@ body::before {
   right:0;
   left:0;
   width:auto;
-  height:1650px;
-  z-index:-3;
+  height:auto;
+  z-index:-3; 
+  min-height: 100%;
+  min-width: 100%; 
 }
 
 img {
@@ -126,13 +132,13 @@ Button
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #444;
+  color: blue;
 }
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: red;
+  color: red;
 }
 
 /* --------------------------------------------------------------------------------
