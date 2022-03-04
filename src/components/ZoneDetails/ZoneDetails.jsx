@@ -26,13 +26,13 @@ function ZoneDetails() {
   // list page.
   return (
     <div className="detailsContainer">
-      <h2>More Details about {selectedZone[0]?.zone}:</h2>
-      <img src={selectedZone[0]?.screenshot} />
+      <h2>More Details about: <h2 className="nonBold">{selectedZone[0]?.zone}</h2></h2>
+      <br/>
       <h2>Settlements: </h2>
       <ul>
         {selectedTowns.map(town => {
           return (
-            <li key={town?.id}><h3>{town?.town}</h3><p>{town?.description}</p></li>
+            <li key={town?.id}><h3 className="nonBold italicText">{town?.town}</h3><p className="nonBold">{town?.description}</p></li>
           );
         })}
       </ul>
@@ -42,12 +42,12 @@ function ZoneDetails() {
         <>
           <h2>Dungeon: </h2>
           <ul>
-            <li><h3>{selectedDungeon[0]?.dungeon}</h3></li>
+            <li><h3 className="nonBold italicText">{selectedDungeon[0]?.dungeon}</h3><p className="nonBold dungeonParTag">{selectedDungeon[0]?.description}</p></li>
           </ul>
-          <p>{selectedDungeon[0]?.description}</p>
-          <h3>Level Range: {selectedDungeon[0]?.min_level} - {selectedDungeon[0]?.max_level}</h3>
+          <h3>Level Range of {selectedDungeon[0]?.dungeon}: {selectedDungeon[0]?.min_level} - {selectedDungeon[0]?.max_level}</h3>
         </>
       }
+       <img src={selectedZone[0]?.screenshot} />
       <Button variant="primary" onClick={() => history.push(`/zone/${id}/${charId}`)}>Go Back</Button>
     </div>
   );

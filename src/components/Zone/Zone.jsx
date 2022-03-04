@@ -20,12 +20,12 @@ function Zone() {
   // This page is responsible for grabbing the selected zone information by id and displaying it on the DOM.
   return (
     <div className="zoneContainer">
-      <h2>{selectedZone[0]?.zone}</h2>
+      <h2>You are now in the zone: <h2 className="nonBold">{selectedZone[0]?.zone}</h2></h2>
+      <h4>Description: <h4 className="nonBold">{selectedZone[0]?.description}</h4></h4>
+      <h3>Faction: <h3 className="nonBold">{selectedZone[0]?.type}</h3></h3>
+      <h3>Continent: <h3 className="nonBold">{selectedZone[0]?.landmass}</h3></h3>
+      <h3>Level Range: <h3 className="nonBold">{selectedZone[0]?.min_level} - {selectedZone[0]?.max_level}</h3></h3>
       <img src={selectedZone[0]?.map_image_url} />
-      <h4>{selectedZone[0]?.description}</h4>
-      <h3>Faction: {selectedZone[0]?.type}</h3>
-      <h3>Continent: {selectedZone[0]?.landmass}</h3>
-      <h3>Level Range: {selectedZone[0]?.min_level} - {selectedZone[0]?.max_level}</h3>
       <Button variant="primary" onClick={() => history.push(`/details/${id}/${charId}`)}>More Details</Button>
       <Button variant="primary" onClick={() => history.push(`/quests/${charId}/${id}`)}>Quest List</Button>
     </div>

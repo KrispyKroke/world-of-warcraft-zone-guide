@@ -19,11 +19,11 @@ function CityPage() {
 
     return (
         <div className="cityContainer">
-            <h2>{city[0]?.city}</h2>
-            <h3>Faction: {city[0]?.type}</h3>
-            <h3>Zone: {city[0]?.zone}</h3>
-            <img src={city[0]?.map_image_url} />
-            <h4>{city[0]?.description}</h4>
+            <h2>Capital City: <h2 className="nonBold">{city[0]?.city}</h2></h2>
+            <h3>Faction: <h3 className="nonBold">{city[0]?.type}</h3></h3>
+            <h3>Zone: <h3 className="nonBold">{city[0]?.zone}</h3></h3>
+            <h4>Description: <h4 className="nonBold">{city[0]?.description}</h4></h4>
+            <img className="capCityMap" src={city[0]?.map_image_url} />
         </div>
     );
 }

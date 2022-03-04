@@ -12,10 +12,30 @@ body {
 
 h1, h2, h3, h4, p, footer {
   font-weight: 700;
-  padding: 15px;
+  padding: 10px;
   color: black;
 }
 
+li {
+  font-size: 25px;
+}
+
+h2, h3, h4 {
+  display: inline-block;
+}
+
+
+.nonBold {
+  font-weight: 100;
+}
+
+.italicText {
+  font-style: italic;
+}
+
+.dungeonParTag {
+  font-size: 25px;
+}
 
 
 label {
@@ -29,28 +49,29 @@ input, select {
   border-radius: 10%;
 }
 
-html::before {
-  content: "";
-  background: url('/public/images/wow_background_image.jpg');
-  opacity:0.6; 
-  position:absolute;
+body {
+  background: 
+    linear-gradient( 
+    rgba(210, 210, 210, 0.6), 
+    rgba(210, 210, 210, 0.6) ), 
+    url('/public/images/wow_background_image.jpg');
   background-size: cover;
-  top:0;
-  bottom:0;
-  right:0;
-  left:0;
-  width:auto;
-  height:auto;
-  z-index:-3; 
-  min-height: 100%;
-  min-width: 100%; 
+  background-position: center;
+  background-attachment: fixed;
 }
 
 img {
   display: inline-block;
   max-width: 100%;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
+.capCityMap {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .worldMap {
   width: auto;
