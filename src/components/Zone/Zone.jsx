@@ -25,9 +25,10 @@ function Zone() {
       <h3>Faction: <h3 className="nonBold">{selectedZone[0]?.type}</h3></h3>
       <h3>Continent: <h3 className="nonBold">{selectedZone[0]?.landmass}</h3></h3>
       <h3>Level Range: <h3 className="nonBold">{selectedZone[0]?.min_level} - {selectedZone[0]?.max_level}</h3></h3>
+      <br/>
+      <Button className="moreDetailsBtn" variant="primary" onClick={() => history.push(`/details/${id}/${charId}`)}>More Details</Button>
+      <Button className="questListBtn" variant="primary" onClick={() => history.push(`/quests/${charId}/${id}`)}>Quest List</Button>
       <img src={selectedZone[0]?.map_image_url} />
-      <Button variant="primary" onClick={() => history.push(`/details/${id}/${charId}`)}>More Details</Button>
-      <Button variant="primary" onClick={() => history.push(`/quests/${charId}/${id}`)}>Quest List</Button>
     </div>
   );
 }

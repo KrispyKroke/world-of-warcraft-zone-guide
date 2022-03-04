@@ -40,7 +40,7 @@ function Quests() {
           })}
         </tbody>
       </Table>
-      <Button variant="primary" onClick={() => history.push(`/zone/${zoneId}/${charId}`)}>Go Back</Button>
+      <Button className="backBtn" variant="primary" onClick={() => history.push(`/zone/${zoneId}/${charId}`)}>Go Back</Button>
     </div>
   );
 }

@@ -93,11 +93,25 @@ Button
 -------------------------------------------------------------------------------- */
 
 .secondary {
-  background-color: grey !important;
+  background-color: skyblue !important;
+  color: blue !important;
+}
+
+.moreDetailsBtn, .questListBtn, .backBtn {
+  margin: 10px;
+  margin-bottom: 15px;
+  background-color: skyblue !important;
+  color: blue !important;
+  font-weight: 700;
 }
 
 .selectBtn {
   background-color: limegreen !important;
+}
+
+.loginBtn, .registerBtn {
+  background-color: skyblue !important;
+  color: blue !important;
 }
 
 .deleteBtn {
@@ -108,8 +122,8 @@ Button
   margin: 10px;
   font-size: 20px;
   border-radius: 15%;
-  background-color: #00acb0;
-  color: white;
+  background-color: skyblue;
+  color: blue;
 }
 
 .btn {

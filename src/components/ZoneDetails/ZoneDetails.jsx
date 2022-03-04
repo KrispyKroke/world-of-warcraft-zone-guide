@@ -47,8 +47,9 @@ function ZoneDetails() {
           <h3>Level Range of {selectedDungeon[0]?.dungeon}: {selectedDungeon[0]?.min_level} - {selectedDungeon[0]?.max_level}</h3>
         </>
       }
-       <img src={selectedZone[0]?.screenshot} />
-      <Button variant="primary" onClick={() => history.push(`/zone/${id}/${charId}`)}>Go Back</Button>
+      <br/>
+      <Button className="backBtn" variant="primary" onClick={() => history.push(`/zone/${id}/${charId}`)}>Go Back</Button>
+      <img src={selectedZone[0]?.screenshot} />
     </div>
   );
 }
