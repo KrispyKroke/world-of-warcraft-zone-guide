@@ -186,7 +186,7 @@ function CharacterFormAndTable() {
   return (
     <>
       <div className="formContainer">
-        <h2>Add a Character</h2>
+        <h2>My Characters</h2>
         <form onSubmit={(event) => addCharacter(event)}>
           <label>What is your character's name?</label>
           <input type="text" placeholder="name" value={charName} onChange={event => setCharName(event.target.value)} />
