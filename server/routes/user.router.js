@@ -1,5 +1,5 @@
 const express = require('express');
-const { reset } = require('nodemon');
+
 const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
