@@ -10,6 +10,7 @@ For this project, I decided to make an interactive player guide for people inter
 
 ## Screenshots
 
+<img width="1246" alt="Screen Shot 2022-03-12 at 4 54 04 PM" src="https://user-images.githubusercontent.com/91631646/158037853-3e7384c5-cbd6-4d24-a45f-71f942a4c45b.png">
 
 Before you get started, make sure you have the following software installed on your computer:
 
