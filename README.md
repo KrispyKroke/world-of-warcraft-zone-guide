@@ -3,23 +3,46 @@
 
 # Description
 
-Duration: 2 weeks (roughly)
+Duration: 2 weeks (3-6 days of additional time for scoping)
 
 For this project, I decided to make an interactive player guide for people interested in playing World of Warcraft Classic.  New players to the game will likely have no context or understanding of the game world, and may want another resource to show them all that they can experience in the game.  This application allows a user to create characters of all types and explore the vibrant and detailed universe of World of Warcraft Classic through interactive pages with game information.
 
 
 ## Screenshots
 
+## Welcome Page
+
+The user is greeted by this page when the app is booted up.
+
 <img width="1246" alt="Screen Shot 2022-03-12 at 4 54 04 PM" src="https://user-images.githubusercontent.com/91631646/158037853-3e7384c5-cbd6-4d24-a45f-71f942a4c45b.png">
+
+## Character List Page
+
+Here is the page where the user can add and delete characters, as well as go to the zone for that character.
 
 <img width="1234" alt="Screen Shot 2022-03-12 at 5 01 20 PM" src="https://user-images.githubusercontent.com/91631646/158037993-592decc4-75a8-45fc-a195-9f2a6ec617af.png">
 
+## Zone Page for Desolace
+
+This is just 1 of 38 zones which are included in this application.
+
 <img width="1249" alt="Screen Shot 2022-03-12 at 5 01 52 PM" src="https://user-images.githubusercontent.com/91631646/158038031-41884626-1d00-46f8-a091-12dd54714496.png">
+
+## Map of Desolace on Zone Page
+
+Here is the map on the page shown above.
 
 <img width="1210" alt="Screen Shot 2022-03-12 at 5 02 06 PM" src="https://user-images.githubusercontent.com/91631646/158038100-f1a301ed-3ed4-496b-9eaa-951c0eeac4e3.png">
 
+## Quest List Page for Desolace
+
+37 of 38 zones display 3 quests per zone on this page.  The user can check off quests for their character on this page.  Deadwind Pass is the one zone included in the app with no quests available.
+
 <img width="1234" alt="Screen Shot 2022-03-12 at 5 05 36 PM" src="https://user-images.githubusercontent.com/91631646/158038125-5fd27f37-aaca-4936-8a0f-609d292c86a3.png">
 
+The images above are not comprehensive.  There are other pages in the application which the user can see and interact with that are not shown here.
+
+## Prerequisites
 
 Before you get started, make sure you have the following software installed on your computer:
 
@@ -27,105 +50,40 @@ Before you get started, make sure you have the following software installed on y
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
-## Create database and table
+## Installation
 
-Create a new database called `prime_app` and create a `user` table:
+1. Fork the repository and clone it to your machine
+2. Create a database in Postico called `wow_zone_guide_solo_project`.
+3. Insert the queries from the database.sql file and run them to populate the database.
+4. Open up your terminal, navigate to the project folder, and run an `npm install`.
+5. Start your server with `npm run server`.
+6. Start up your client with `npm run client`.
+7. Navigate to localhost:3000 if you have not automatically.
 
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
+## Usage
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+1. After starting up the application, you should register a new user. This will log you in automatically.
+2. You will see a map of the game world.  You can click on the buttons below to navigate to pages for each capital city in the game.  There is information about each city on their respective page.
+3. You should see a Nav-Bar on the banner at the top of the browser screen.  While logged in, you can navigate to the world map page, the character list page, and the home page by logging out as well.
+4. If you go to the characters page, you can add a character to your list by filling out the inputs.  You can add up to 20 characters per user.  You also have the ability to delete characters.  If you click the `Go to Zone` button for a character, you willl be transported to the appropriate zone page.
+5. On the zone page, you will see information about the zone, and you will also have the option to see further details about the zone, as well as the ability to go to a quest list page for that zone.
+6. On the quest list page, the quests shown to you have completion statuses which are unique to that character.
+7. This means that each character can complete any quest, and if they complete a quest it will only mark that quest as completed for that character.
+8. It should also be noted that there is an Admin page for users with Admin status where all non-Admin users can be viewed in a table.  Any of these users can be deleted by an Admin.  There is a query in the database.sql file to upgrade a user to Admin status.
 
-## Development Setup Instructions
+## Built With
 
-- Run `npm install`
-- Create a `.env` file at the root of the project and paste this line into the file:
-  ```
-  SERVER_SESSION_SECRET=superDuperSecret
-  ```
-  While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm run server`
-- Run `npm run client`
-- Navigate to `localhost:3000`
+- React
+- Redux/Sagas
+- SQL
+- Javascript
+- Express
 
-## Debugging
+## Acknowledgement
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
+I would like to thank my instructor and classmates at Emerging Digital Academy for supporting me in my endeavor with this project.
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
+## Support
 
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
+If you have suggestions or issues, feel free to contact me at jared.kroke@gmail.com.
 
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
-
-## Testing Routes with Postman
-
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum.
-
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
-
-1. Start the server - `npm run server`
-2. Import the sample routes JSON file [v2](./PostmanPrimeSoloRoutesv2.json) by clicking `Import` in Postman. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-   1. `POST /api/user/register` registers a new user, see body to change username/password
-   2. `POST /api/user/login` will login a user, see body to change username/password
-   3. `GET /api/user` will get user information, by default it's not very much
-
-After running the login route above, you can try any other route you've created that requires a logged in user!
-
-## Production Build
-
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
-
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm start`
-- Navigate to `localhost:5000`
-
-## Lay of the Land
-
-There are a few videos linked below that show a walkthrough the client and sever setup to help acclimatize to the boilerplate. Please take some time to watch the videos in order to get a better understanding of what the boilerplate is like.
-
-- [Initial Set](https://vimeo.com/453297271)
-- [Server Walkthrough](https://vimeo.com/453297212)
-- [Client Walkthrough](https://vimeo.com/453297124)
-
-Directory Structure:
-
-- `src/` contains the React application
-- `public/` contains static assets for the client-side
-- `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-- `server/` contains the Express App
-
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
-
-- src/components
-  - App/App
-  - Footer/Footer
-  - Nav/Nav
-  - AboutPage/AboutPage
-  - InfoPage/InfoPage
-  - UserPage/UserPage
-  - LoginPage/LoginPage
-  - RegisterPage/RegisterPage
-  - LogOutButton/LogOutButton
-  - ProtectedRoute/ProtectedRoute
-
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
