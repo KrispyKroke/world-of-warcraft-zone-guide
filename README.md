@@ -14,6 +14,8 @@ For this project, I decided to make an interactive player guide for people inter
 
 <img width="1234" alt="Screen Shot 2022-03-12 at 5 01 20 PM" src="https://user-images.githubusercontent.com/91631646/158037993-592decc4-75a8-45fc-a195-9f2a6ec617af.png">
 
+<img width="1249" alt="Screen Shot 2022-03-12 at 5 01 52 PM" src="https://user-images.githubusercontent.com/91631646/158038031-41884626-1d00-46f8-a091-12dd54714496.png">
+
 Before you get started, make sure you have the following software installed on your computer:
 
 - [Node.js](https://nodejs.org/en/)
