@@ -1,15 +1,15 @@
 
-# Prime Solo Project Starting Repo
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+# World of Warcraft Zone Guide
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+# Description
 
-## Use the Template for This Repository (Don't Clone)
+Duration: 2 weeks (roughly)
 
-- Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account.
+For this project, I decided to make an interactive player guide for people interested in playing World of Warcraft Classic.  New players to the game will likely have no context or understanding of the game world, and may want another resource to show them all that they can experience in the game.  This application allows a user to create characters of all types and explore the vibrant and detailed universe of World of Warcraft Classic through interactive pages with game information.
 
 
-## Prerequisites
+## Screenshots
+
 
 Before you get started, make sure you have the following software installed on your computer:
 
