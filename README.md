@@ -1,7 +1,7 @@
 
 # World of Warcraft Zone Guide
 
-# Description
+## Description
 
 Duration: 2 weeks (3-6 days of additional time for scoping)
 
