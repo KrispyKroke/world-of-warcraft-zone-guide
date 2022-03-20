@@ -78,6 +78,7 @@ Before you get started, make sure you have the following software installed on y
 - SQL
 - Javascript
 - Express
+- Bootstrap
 
 ## Acknowledgement
 
