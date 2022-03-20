@@ -52,7 +52,7 @@ Before you get started, make sure you have the following software installed on y
 
 ## Installation
 
-1. Fork the repository and clone it to your machine
+1. Fork the repository and clone it to your machine.
 2. Create a database in Postico called `wow_zone_guide_solo_project`.
 3. Insert the queries from the database.sql file and run them to populate the database.
 4. Open up your terminal, navigate to the project folder, and run an `npm install`.
